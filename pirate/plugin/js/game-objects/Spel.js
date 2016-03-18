@@ -1,6 +1,6 @@
 define(
-    ["game-objects/bootFabriek", "game-objects/vaarRoute","jquery", "game-objects/Boot", "game-objects/Vloot", "game-objects/ScoreBord"], function (bootFabriek,vaarRoute) {
-        var scoreBord;
+    ["game-objects/bootFabriek", "game-objects/vaarRoute","game-objects/ScoreBord","jquery", "game-objects/Boot", "game-objects/Vloot"],
+    function (bootFabriek,vaarRoute,scoreBord) {
         var vloot;
 
         function vulVloot() {
@@ -46,6 +46,7 @@ define(
 
         function volgendeLevel() {
             if (scoreBord.isSpelGedaan()) {
+                scoreBord.toonRanking();
                 $(".overlay").show();
             } else {
                 initBoot(vloot.randomBoot());
@@ -57,7 +58,6 @@ define(
         return {
             start: function () {
                 $(".overlay").hide();
-                scoreBord = new ScoreBord($('#scorebord'));
                 scoreBord.reset();
                 vulVloot().then(function () {
                     initBoot(vloot.randomBoot());
