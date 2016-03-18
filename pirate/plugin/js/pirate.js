@@ -1,8 +1,8 @@
-var ScoreBord = function(element){
+var ScoreBord = function (element) {
     var score = 0;
 
     return {
-        verhoogScore :function(){
+        verhoogScore: function () {
             score++;
             $(element).text(score + ' punten');
         }
@@ -27,7 +27,7 @@ function initBoot(boot) {
 
     $($(".opgave")[0]).text(boot.som);
 
-    $('.bal').on('click', function(){
+    $('.bal').on('click', function () {
         var keuze = $(this).text();
         if (parseInt(keuze) === boot.oplossing) {
             scoreBord.verhoogScore();
@@ -47,4 +47,41 @@ function volgendeLevel() {
 function randomBoot() {
     var index = Math.floor((Math.random() * boten.length));
     return boten[index];
+}
+
+function animateBoot() {
+    $(".vijand").animate(
+        {
+            left: "+=200"
+        },
+        {
+            duration: 10000,
+            easing: "linear",
+            fail: function () {
+                console.log("animation failed...");
+            }
+        });
+}
+
+function zinkBoot() {
+    $(".vijand").stop();
+    $(".vijand img").css("transform", "rotate(270deg)");
+    $(".vijand").animate({
+            height: "toggle",
+            top: "+=120"
+        }, {
+            duration: 2000,
+            done: function () {
+                console.log("start hier een nieuwe boot");
+                resetBoot();
+            }
+        });
+}
+
+function resetBoot() {
+    $(".vijand img").css("transform", "rotate(0deg)")
+    $(".vijand")
+        .css("left", "0px")
+        .css("top", "150px")
+        .show();
 }
