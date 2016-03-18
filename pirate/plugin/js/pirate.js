@@ -1,13 +1,10 @@
-var boot = {
-    som: "1+1",
-    tijd: 5,
-    oplossingen: [1, 2, 3, 4],
-    oplossing: 2
-};
-
 var score = 0;
 
 $(function () {
+    initBoot(randomBoot());
+});
+
+function initBoot(boot) {
     var voorraad = $('.voorraad')[0];
 
     boot.oplossingen.forEach(
@@ -22,13 +19,25 @@ $(function () {
     var scoreBord = new ScoreBord($('#scorebord'));
     $('.bal').on('click', function(){
         var keuze = $(this).text();
-        if(parseInt(keuze) === boot.oplossing){
+        if (parseInt(keuze) === boot.oplossing) {
             scoreBord.verhoogScore();
-        }else{
-            console.log('niet correct');
+            volgendeLevel();
+        } else {
+            voorraad.removeChild(event.target)
         }
     });
-});
+}
+
+function volgendeLevel() {
+    var voorraad = $('.voorraad');
+    voorraad.empty();
+    initBoot(randomBoot());
+}
+
+function randomBoot() {
+    var index = Math.floor((Math.random() * boten.length));
+    return boten[index];
+}
 
 
 var ScoreBord = function(element){
