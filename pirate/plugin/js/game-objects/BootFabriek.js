@@ -1,4 +1,5 @@
-var BootFabriek = function() {
+define(
+    ["jquery"], function() {
     return {
         maakBoot: function(jsonBoot) {
             var boot = new Boot();
@@ -9,4 +10,4 @@ var BootFabriek = function() {
             return boot;
         }
     }
-};
+});
