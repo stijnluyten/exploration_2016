@@ -6,14 +6,12 @@ var Spel = function() {
         var bootFabriek = new BootFabriek();
         var boten = [];
 
-        $.getJSON("../data/DataBank.json", function(jsonFromFile) {
+        return $.getJSON("../data/DataBank.json", function(jsonFromFile) {
             jsonFromFile.forEach(function(jsonObject) {
                 boten.push(bootFabriek.maakBoot(jsonObject));
             });
 
             vloot = new Vloot(boten);
-
-            initBoot(vloot.randomBoot());
         });
     }
 
@@ -48,7 +46,9 @@ var Spel = function() {
     return {
         start: function() {
             scoreBord = new ScoreBord($('#scorebord'));
-            vulVloot();
+            vulVloot().then(function() {
+                initBoot(vloot.randomBoot());
+            });
         }
     }
 };

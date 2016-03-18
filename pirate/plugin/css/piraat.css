@@ -45,7 +45,7 @@ html {
 }
 
 .voorraad div {
-    background-image: url("../icons/cannonball.png");
+    background-image: url("../assets/cannonball.png");
     width: 100px;
     height: 100px;
     text-align: center;
