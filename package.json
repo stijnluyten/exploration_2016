@@ -1,0 +1,30 @@
+{
+  "name": "rekenpiraat",
+  "version": "1.0.0",
+  "description": "Rekenspel voor piraten",
+  "main": "app.js",
+  "dependencies": {
+    "gulp": "^3.9.1",
+    "gulp-clean": "^0.3.2",
+    "gulp-dest": "^0.2.3",
+    "gulp-install": "^0.6.0",
+    "jquery": "^2.2.2"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-install": "^0.6.0"
+  },
+  "scripts": {
+    "clean": "gulp clean"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stijnluyten/exploration_2016.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/stijnluyten/exploration_2016/issues"
+  },
+  "homepage": "https://github.com/stijnluyten/exploration_2016#readme"
+}
