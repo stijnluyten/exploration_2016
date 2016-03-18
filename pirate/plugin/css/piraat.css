@@ -1,5 +1,7 @@
 .canvas {
-    position: relative;
+    position: absolute;
+    top: 0px;
+    left: 0px;
 }
 
 .scorebord {
@@ -16,7 +18,7 @@
 }
 
 .water {
-    background-color: blue;
+    background-color: lightskyblue;
     height: 300px;
     width: 800px;
 }
@@ -32,12 +34,15 @@
     position: absolute;
     bottom: 0px;
     left: 0px;
+    display: inline-flex;
 }
 
-.voorraad span {
+.voorraad div {
     background-image: url("../icons/cannonball.png");
     width: 100px;
     height: 100px;
+    text-align: center;
+    vertical-align: middle;
 }
 
 .kannon {
