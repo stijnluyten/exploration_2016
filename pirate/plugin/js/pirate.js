@@ -1,12 +1,20 @@
-requirejs.config({
-    baseUrl : '../js',
-    paths:{
-        jquery: './ext/jquery-2.2.2.min',
-        gameobjects:'./game-objects'
-    }
+$(function() {
 
+    $("#startSpelKnop").click(function () {
+        var spel = new Spel();
+        spel.start();
+    });
 });
 
-require(['game-objects/spel'], function(spel){
-    spel.start();
+
+
+
+$(function() {
+    require(['game-objects/spel'], function(spel){
+        $("#startSpelKnop").click(function () {
+            spel.start();
+        });
+    });
+
+   
 });

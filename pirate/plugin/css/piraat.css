@@ -2,10 +2,31 @@ html {
     font-family: "Comic Sans MS", cursive, sans-serif
 }
 
-.canvas {
+.canvas, .overlay {
     position: absolute;
     top: 0px;
     left: 0px;
+}
+
+.overlay {
+    z-index: 2;
+    width: 800px;
+    height: 600px;
+}
+
+.menu {
+    position: absolute;
+    background-color: ghostwhite;
+    width: 400px;
+    height: 300px;
+    top: 100px;
+    left: 150px;
+    text-align: center;
+    padding: 50px;
+}
+
+.menu a {
+    border: 1px solid;
 }
 
 .scorebord {
@@ -17,7 +38,7 @@ html {
 
 .vijand {
     position: absolute;
-    left: 0px;
+    left: -120px;
     top: 150px;
 }
 
