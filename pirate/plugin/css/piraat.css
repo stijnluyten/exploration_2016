@@ -1,0 +1,55 @@
+.canvas {
+    position: relative;
+}
+
+.scorebord {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+}
+
+.vijand {
+    width: 400px;
+    position: absolute;
+    left: 0px;
+    top: 150px;
+}
+
+.water {
+    background-color: blue;
+    height: 300px;
+    width: 800px;
+}
+
+.piratenschip {
+    background-color: burlywood;
+    height: 300px;
+    width: 800px;
+}
+
+.voorraad {
+    width: 400px;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+}
+
+.voorraad span {
+    background-image: url("../icons/cannonball.png");
+    width: 100px;
+    height: 100px;
+}
+
+.kannon {
+    width: 200px;
+    position: absolute;
+    bottom: 0px;
+    left: 400px;
+}
+
+.kapitein {
+    width: 200px;
+    position: absolute;
+    bottom: 0px;
+    left: 600px;
+}
