@@ -1,6 +1,7 @@
 var Spel = function() {
     var scoreBord;
     var vloot;
+    var vaarRoute = new VaarRoute();
 
     function vulVloot() {
         var bootFabriek = new BootFabriek();
@@ -29,23 +30,26 @@ var Spel = function() {
         $('.bal').on('click', function(){
             var keuze = $(this).text();
             if (parseInt(keuze) === boot.oplossing) {
+                vaarRoute.zinkBoot(volgendeLevel);
                 scoreBord.verhoogScore();
-                volgendeLevel();
-            } else {
-                voorraad.removeChild(event.target)
             }
+            voorraad.removeChild(event.target)
         });
+
+        vaarRoute.startMetVaren(volgendeLevel);
     }
 
     function volgendeLevel() {
         var voorraad = $('.voorraad');
         voorraad.empty();
         initBoot(vloot.randomBoot());
+        vaarRoute.resetBoot();
     }
 
     return {
         start: function() {
             scoreBord = new ScoreBord($('#scorebord'));
+            vaarRoute = new VaarRoute();
             vulVloot().then(function() {
                 initBoot(vloot.randomBoot());
             });
