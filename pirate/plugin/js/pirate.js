@@ -18,15 +18,30 @@ $(function () {
 
     $($(".opgave")[0]).text(boot.som);
 
+
+    var scoreBord = new ScoreBord($('#scorebord'));
     $('.bal').on('click', function(){
         var keuze = $(this).text();
         if(parseInt(keuze) === boot.oplossing){
-            verhoogScore();
+            scoreBord.verhoogScore();
         }else{
             console.log('niet correct');
         }
     });
 });
+
+
+var ScoreBord = function(element){
+    var score = 0;
+
+    return {
+        verhoogScore :function(){
+            score++;
+            $(element).text(score + ' punten');
+        }
+    }
+}
+
 
 function verhoogScore() {
     score++;
