@@ -41,9 +41,3 @@ var ScoreBord = function(element){
         }
     }
 }
-
-
-function verhoogScore() {
-    score++;
-    $('#scorebord').text(score + ' punten');
-}
