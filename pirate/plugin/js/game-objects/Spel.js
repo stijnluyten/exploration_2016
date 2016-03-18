@@ -17,6 +17,7 @@ var Spel = function() {
     }
 
     function initBoot(boot) {
+        $('.voorraad').empty();
         var voorraad = $('.voorraad')[0];
 
         boot.oplossingen.forEach(
@@ -31,24 +32,35 @@ var Spel = function() {
             var keuze = $(this).text();
             if (parseInt(keuze) === boot.oplossing) {
                 vaarRoute.zinkBoot(volgendeLevel);
-                scoreBord.verhoogScore();
+                scoreBord.oefeningJuist();
             }
             voorraad.removeChild(event.target)
         });
 
-        vaarRoute.startMetVaren(volgendeLevel);
+        vaarRoute.startMetVaren(bootIsVoorbijGegaan);
+    }
+
+    function bootIsVoorbijGegaan() {
+        scoreBord.oefeningFout();
+        volgendeLevel();
     }
 
     function volgendeLevel() {
-        var voorraad = $('.voorraad');
-        voorraad.empty();
-        initBoot(vloot.randomBoot());
-        vaarRoute.resetBoot();
+        if (scoreBord.isSpelGedaan()) {
+            $(".overlay").show();
+        } else {
+            initBoot(vloot.randomBoot());
+            vaarRoute.resetBoot();
+        }
     }
+
+
 
     return {
         start: function() {
+            $(".overlay").hide();
             scoreBord = new ScoreBord($('#scorebord'));
+            scoreBord.reset();
             vaarRoute = new VaarRoute();
             vulVloot().then(function() {
                 initBoot(vloot.randomBoot());

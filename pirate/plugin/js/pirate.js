@@ -1,5 +1,7 @@
 $(function() {
-    var spel = new Spel();
 
-    spel.start();
+    $("#startSpelKnop").click(function () {
+        var spel = new Spel();
+        spel.start();
+    });
 });
