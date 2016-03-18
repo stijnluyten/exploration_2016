@@ -1,6 +1,18 @@
-var score = 0;
+var ScoreBord = function(element){
+    var score = 0;
+
+    return {
+        verhoogScore :function(){
+            score++;
+            $(element).text(score + ' punten');
+        }
+    }
+};
+
+var scoreBord;
 
 $(function () {
+    scoreBord = new ScoreBord($('#scorebord'));
     initBoot(randomBoot());
 });
 
@@ -15,8 +27,6 @@ function initBoot(boot) {
 
     $($(".opgave")[0]).text(boot.som);
 
-
-    var scoreBord = new ScoreBord($('#scorebord'));
     $('.bal').on('click', function(){
         var keuze = $(this).text();
         if (parseInt(keuze) === boot.oplossing) {
@@ -37,16 +47,4 @@ function volgendeLevel() {
 function randomBoot() {
     var index = Math.floor((Math.random() * boten.length));
     return boten[index];
-}
-
-
-var ScoreBord = function(element){
-    var score = 0;
-
-    return {
-        verhoogScore :function(){
-            score++;
-            $(element).text(score + ' punten');
-        }
-    }
 }
