@@ -38,7 +38,7 @@ html {
 .voorraad {
     width: 400px;
     position: absolute;
-    bottom: 0px;
+    bottom: 20px;
     left: 0px;
     display: inline-flex;
 }
@@ -56,13 +56,13 @@ html {
 .kannon {
     width: 200px;
     position: absolute;
-    bottom: 0px;
+    bottom: 20px;
     left: 400px;
 }
 
 .kapitein {
     width: 200px;
     position: absolute;
-    bottom: 0px;
+    bottom: 20px;
     left: 600px;
 }
