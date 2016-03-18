@@ -9,12 +9,13 @@
 }
 
 .vijand {
-    width: 400px;
     position: absolute;
     left: 0px;
     top: 150px;
 }
-
+.opgave {
+    text-align: center;
+}
 .water {
     background-color: blue;
     height: 300px;
