@@ -1,6 +1,6 @@
 {
-  "name": "Hello World!",
-  "description": "My first Chrome App.",
+  "name": "Reken Piraat!",
+  "description": "Aaarch",
   "version": "0.2",
   "manifest_version": 2,
   "app": {
