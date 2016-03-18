@@ -1,4 +1,4 @@
-var VaarRoute = function () {
+define(["jquery"],function () {
     var resetBootVar = function () {
         $(".vijand img").css("transform", "rotate(0deg)");
         $(".vijand")
@@ -40,4 +40,4 @@ var VaarRoute = function () {
         },
         resetBoot: resetBootVar
     }
-};
+});

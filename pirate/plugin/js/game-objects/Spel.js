@@ -1,22 +1,20 @@
 define(
-    ["game-objects/bootFabriek", "jquery", "game-objects/Boot", "game-objects/Vloot", "game-objects/ScoreBord"], function (bootFabriek) {
+    ["game-objects/bootFabriek", "game-objects/vaarRoute","jquery", "game-objects/Boot", "game-objects/Vloot", "game-objects/ScoreBord"], function (bootFabriek,vaarRoute) {
         var scoreBord;
         var vloot;
-        var vaarRoute = new VaarRoute();
-
-
 
         function vulVloot() {
             var boten = [];
 
-            return $.getJSON("../data/DataBank.json", function(jsonFromFile) {
-                jsonFromFile.forEach(function(jsonObject) {
+            return $.getJSON("../data/DataBank.json", function (jsonFromFile) {
+                jsonFromFile.forEach(function (jsonObject) {
                     boten.push(bootFabriek.maakBoot(jsonObject));
                 });
 
                 vloot = new Vloot(boten);
             });
         }
+
         function initBoot(boot) {
             $('.voorraad').empty();
             var voorraad = $('.voorraad')[0];
@@ -29,7 +27,7 @@ define(
 
             $($(".opgave")[0]).text(boot.som);
 
-            $('.bal').on('click', function(){
+            $('.bal').on('click', function () {
                 var keuze = $(this).text();
                 if (parseInt(keuze) === boot.oplossing) {
                     vaarRoute.zinkBoot(volgendeLevel);
@@ -41,33 +39,29 @@ define(
             vaarRoute.startMetVaren(bootIsVoorbijGegaan);
         }
 
-    function bootIsVoorbijGegaan() {
-        scoreBord.oefeningFout();
-        volgendeLevel();
-    }
-
-    function volgendeLevel() {
-        if (scoreBord.isSpelGedaan()) {
-            $(".overlay").show();
-        } else {
-            initBoot(vloot.randomBoot());
-            vaarRoute.resetBoot();
+        function bootIsVoorbijGegaan() {
+            scoreBord.oefeningFout();
+            volgendeLevel();
         }
-    }
 
-
-
-    return {
-        start: function() {
-            $(".overlay").hide();
-            scoreBord = new ScoreBord($('#scorebord'));
-            scoreBord.reset();
-            vaarRoute = new VaarRoute();
-            vulVloot().then(function () {
+        function volgendeLevel() {
+            if (scoreBord.isSpelGedaan()) {
+                $(".overlay").show();
+            } else {
                 initBoot(vloot.randomBoot());
-            });
-        });
+                vaarRoute.resetBoot();
+            }
+        }
 
 
-       
+        return {
+            start: function () {
+                $(".overlay").hide();
+                scoreBord = new ScoreBord($('#scorebord'));
+                scoreBord.reset();
+                vulVloot().then(function () {
+                    initBoot(vloot.randomBoot());
+                });
+            }
+        }
     });
